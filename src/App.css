@@ -1,0 +1,14 @@
+.bg-container{
+  background: #444444;
+  padding: 10px;
+  width: 800px;
+}
+
+
+.bg-container-light-mode{
+  background-color: #FFFFFF;
+  width: 800px;
+  padding: 10px;
+  border-style: solid;
+  border-color: black;
+}

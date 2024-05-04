@@ -1,0 +1,16 @@
+.sun-image{
+    width: 150px;
+}
+
+.current-weather-report-time-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    box-shadow: 2px 2px 4px black;
+    padding: 0 20px 0 20px;
+    color: #FFFFFF;
+}
+
+.current-weather-report-time-container-light-mode{
+    color: black;
+}
