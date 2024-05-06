@@ -6,7 +6,11 @@ type User={
   isDarkMode:boolean,
 }
 
-const weekDay = {
+type daysOfWeekType = {
+  [key:string]:string;
+}
+
+const weekDay:daysOfWeekType = {
   day1:"Monday",
   day2:"Tuesday",
   day3:"Wednesday",
@@ -16,8 +20,12 @@ const weekDay = {
   day7:"Sunday"
 };
 
+type monthsOfYear = {
+  [key:string]:string;
+}
 
-const month = {
+
+const month:monthsOfYear = {
   month0:"January",
   month1:"February",
   month2:"March",
@@ -74,7 +82,7 @@ class CurrentTimeAndDate extends Component<User>{
        }
        const currentDate = dateObj.getDate()
        const a:string = `day${dateObj.getDay()}`;
-       const currentDay:string = weekDay[a];
+       const currentDay:string = weekDay[a]
        const b:string = `month${dateObj.getMonth()}`
        const currentMonth:string = month[b]
        const currentTime = `${resultant_hour}:${resultant_min} ${timeCaption}`

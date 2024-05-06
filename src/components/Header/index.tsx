@@ -9,7 +9,7 @@ import "./index.css"
 type headerDataType = {
    changeMode:()=>void,
    isDarkMode:boolean,
-   updateCity:()=>void,
+   updateCity:(updatedCity:string)=>void,
 }
 
 class Header extends Component<headerDataType>{
