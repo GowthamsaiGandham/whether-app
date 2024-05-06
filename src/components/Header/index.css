@@ -8,6 +8,7 @@
 
 .search-input-light-mode{
     background-color:white;
+    color: black;
 }
 
 .current-location-caption{
@@ -67,6 +68,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 2px 2px 4px black;
+    margin-bottom: 20px;
 }
 
 .toggle-btn-and-caption-elements-container{
