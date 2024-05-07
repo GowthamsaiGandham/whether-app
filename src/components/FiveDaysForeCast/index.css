@@ -1,18 +1,23 @@
 .five-days-forcast-container{
     box-shadow: 2px 2px 4px black;
     color: #FFFFFF;
-    margin-left: 20px;
-    flex-grow: 1;
-    padding-left: 20px;
-    padding-top: 10px;
+    width: 26%;
+    height: 70vh;
+    margin: 0 10px 0 10px;
+    padding: 5px 10px 0 10px;
+}
+
+.five-days-forecast-heading{
+    margin: 0;
+    font-size: 25px;
 }
 
 .five-days-forecast-table-data{
-   border-spacing: 100px 16px;
+   border-spacing: 10px 3px;
    border-collapse: seperate;
 }
 
 .five-days-forcast-container-light-mode{
-   
     color:black;
+    box-shadow: 2px 2px 4px grey;
 }

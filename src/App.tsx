@@ -4,7 +4,8 @@ import Header from "./components/Header"
 
 import CurrentTimeAndDate from "./components/CurrentTimeAndDate"
 
-//import CurrentWeatherReport from "./components/CurrentWeatherReport"
+
+import HourlyForeCast  from "./components/HourlyForecast"
 
 import ExampleTesting from "./components/ExampleForTesting"
 
@@ -33,11 +34,15 @@ class App extends Component{
   return(
    <div className={bgContainerCssValue}>
         <Header  isDarkMode={isDarkMode} changeMode={this.changeMode} updateCity={this.updateCity}/>
-        <ExampleTesting isDarkMode = {isDarkMode} city={city}/>
-        <div className="current-timedate-and-forecast-container">
-            <CurrentTimeAndDate isDarkMode = {isDarkMode}/>
-            <FiveDaysForeCast isDarkMode = {isDarkMode}/>
+        <div className="current-data-container">
+            <CurrentTimeAndDate isDarkMode = {isDarkMode}/> 
+            <ExampleTesting isDarkMode = {isDarkMode} city={city}/>
         </div>
+        <div className="forecast-data-container">  
+            <FiveDaysForeCast isDarkMode = {isDarkMode}/>
+            <HourlyForeCast isDarkMode = {isDarkMode}/>
+        </div>
+          
    </div>
   )
 }

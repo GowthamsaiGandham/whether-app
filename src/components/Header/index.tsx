@@ -36,6 +36,8 @@ class Header extends Component<headerDataType>{
 
             const {inputSearch} = this.state
 
+            const headerContainerCSS = isDarkMode?"header-container":`header-container ${"header-container-light-mode"}`
+
             const toggleBtnCssValue = isDarkMode?`toggle-btn`:`toggle-btn ${"toggle-btn-light-mode"}`
 
             const modeCaptionCSSValue = isDarkMode?`mode-caption`:`mode-caption ${"mode-caption-light-mode"}`
@@ -44,7 +46,7 @@ class Header extends Component<headerDataType>{
 
             const searchInputCss = isDarkMode?"search-input":`search-input ${"search-input-light-mode"}`
 
-            return(<div  className="header-container">
+            return(<div  className={headerContainerCSS}>
                                  <div className="toggle-btn-and-caption-elements-container">
                                     <div className={toggleBtnCssValue} onClick={this.onChangingMode}>
                                           <div className="toggle-btns-black-dot"></div>
