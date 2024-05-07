@@ -42,7 +42,7 @@ const  ExampleTesting = (props:user)=>{
     const getWeatherData = async()=>{
         const {city} = props;
         try {
-            const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=58b5d8f6b1a54dc98be44216240405&q=${city}`)
+            const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=58b5d8f6b1a54dc98be44216240405&q=${city}`)
             const jsonData = await response.json()
             const {current} = jsonData;
             const updatedCurrentWeatherData:currentWeatherReportDataType = {
@@ -85,7 +85,7 @@ const  ExampleTesting = (props:user)=>{
                             <img className="sun-rise-image" src={isDarkMode?"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714977758/sunrise-white_1_rhnenn.png":"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714991401/sunrise-white_1_jzdftl.png"}/>
                             <div>
                                 <p>Sunrise</p>
-                                <p >6:37 AM</p>
+                                <p >6:00 AM</p>
                             </div>
                             
                         </div>
@@ -93,7 +93,7 @@ const  ExampleTesting = (props:user)=>{
                             <img className="sun-set-image" src={isDarkMode?"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714977790/sunset-white_1_ctnkbw.png":"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714991364/sunset-white_1_xodqhx.png"}/>
                             <div>
                                 <p>Sunset</p>
-                                <p>20:37 AM</p>
+                                <p>06:37 PM</p>
                             </div>
                         </div>
                 </div>
