@@ -1,5 +1,5 @@
 # Overview
-   The Weather Dashbord is an web application which is used to find information about weather in a particular location in both centigarade and  Farenheit.This application not only gives the information about weather but also humidity,
+   The Weather Dashbord is an web application which is used to get information about weather in a mentioned location. The parameters it provides are temperature in both Centigarade and  Fahrenhiet,humidity,
    pressure,WindSpeed,UV,Time and Date in a mentioned location.
 
 

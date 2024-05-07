@@ -41,10 +41,11 @@ const  ExampleTesting = (props:user)=>{
 
     const getWeatherData = async()=>{
         const {city} = props;
-        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=58b5d8f6b1a54dc98be44216240405&q=${city}`)
-        const jsonData = await response.json()
-        const {current} = jsonData;
-        const updatedCurrentWeatherData:currentWeatherReportDataType = {
+        try {
+            const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=58b5d8f6b1a54dc98be44216240405&q=${city}`)
+            const jsonData = await response.json()
+            const {current} = jsonData;
+            const updatedCurrentWeatherData:currentWeatherReportDataType = {
             feelsLikeCenti:current.feelslike_c,
             feelsLikeFaren:current.feelslike_f,
             humidity:current.humidity,
@@ -54,8 +55,15 @@ const  ExampleTesting = (props:user)=>{
             uv:current.uv,
             pressure:current.pressure_mb
         }
+        setWeatherReport(updatedCurrentWeatherData)
+        } catch (error) {
+            console.log(error)
+        }
+        
+       
+       
 
-     setWeatherReport(updatedCurrentWeatherData)
+     
     } 
 
     
@@ -70,8 +78,8 @@ const  ExampleTesting = (props:user)=>{
             <div className={fontCssValue}>
                 <div>
                         <div>
-                            <h1>{isCentigrade?centigrade:fahrenheit}<sup>0</sup>C</h1>
-                            <p >Feels like:<span>{isCentigrade?feelsLikeCenti:feelsLikeFaren}<sup>0</sup>C</span></p>
+                            <h1>{isCentigrade?centigrade:fahrenheit}<sup>0</sup>{isCentigrade?"C":"F"}</h1>
+                            <p >Feels like:<span>{isCentigrade?feelsLikeCenti:feelsLikeFaren}<sup>0</sup>{isCentigrade?"C":"F"}</span></p>
                         </div>
                         <div className="sun-rise-img-time-part-container">
                             <img className="sun-rise-image" src={isDarkMode?"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714977758/sunrise-white_1_rhnenn.png":"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714991401/sunrise-white_1_jzdftl.png"}/>
