@@ -1,5 +1,8 @@
 import {Component} from "react"
 
+import {TailSpin} from "react-loader-spinner"
+
+
 import "./index.css"
 
 type User={
@@ -45,7 +48,8 @@ class CurrentTimeAndDate extends Component<User>{
      time:"",
      day:"",
      date:"",
-     month:""
+     month:"",
+     isLoading:true
   }
 
   componentDidMount(){
@@ -86,20 +90,26 @@ class CurrentTimeAndDate extends Component<User>{
        const b:string = `month${dateObj.getMonth()}`
        const currentMonth:string = month[b]
        const currentTime = `${resultant_hour}:${resultant_min} ${timeCaption}`
-       this.setState({time:currentTime,date:currentDate,day:currentDay,month:currentMonth})
+       this.setState({time:currentTime,date:currentDate,day:currentDay,month:currentMonth,isLoading:false})
       },1000)
   }
 
   render(){
-    const {time,day,date,month} = this.state
+    const {time,day,date,month,isLoading} = this.state
     const {isDarkMode} = this.props
     const fontCssValue = isDarkMode? `current-time-and-date-container`:`current-time-and-date-container ${"current-time-and-date-container-light-mode"}`
     return (
         <div className={fontCssValue}>
+           {
+           isLoading?<TailSpin  color="#00FF00" height={100} width={100}/>:
+           <>
             <h1 className="athens-heading">Athens</h1>
             <p className="current-time">{time}</p>
             <p className="current-day-and-date">{day}, {date} {month}</p>
+           </>
+           }
         </div>
+    
     )
   }
 }

@@ -39,7 +39,7 @@ class FiveDaysForeCast extends Component<user>{
     const fontCssvalue = isDarkMode?`five-days-forcast-container`:`five-days-forcast-container ${"five-days-forcast-container-light-mode"}`
     return(
         <div className={fontCssvalue}>
-            <h1 className="five-days-forecast-heading">5 Days Forecast</h1>
+            <h1 className="five-days-forecast-heading">5 Days Forecast:</h1>
              <table className="five-days-forecast-table-data">
              {forecastData.map(each=>
                     <tr key={each.id}>

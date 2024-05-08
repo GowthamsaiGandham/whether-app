@@ -51,19 +51,28 @@ const HourlyForeCast = (props:user)=>{
 const {isDarkMode} = props
 const hourlyForestCastCSS = isDarkMode?"hourly-forecast-container":"hourly-forecast-container-light-mode"
 
-const listStyling  = isDarkMode?"list-container":`list-container ${"list-container-light-mode"}`
+
+
 
 return(<div className={hourlyForestCastCSS}>
-                              <h1>Hourly Forecast</h1>
+                              <h1  className="hourly-forecast-heading">Hourly Forecast:</h1>
                                <ul className="hourly-forecast-items-container">
                                 {
-                                    hourlyCastItems.map(each=><li key={each.id} className={listStyling}>
+                                    hourlyCastItems.map(each=>{
+                                    let listStyling = "";
+                                    if(each.id <= 3){
+                                        listStyling  = isDarkMode?"list-container":`list-container ${"list-container-light-mode-color1"}`
+                                    }
+                                    else{
+                                        listStyling  = isDarkMode?"list-container":`list-container ${"list-container-light-mode-color2"}`
+                                    }
+                                    return(<li key={each.id} className={listStyling}>
                                     <p className="hourly-forecast-descriptions">{each.time}</p>
                                     <img className="hourly-forecast-sun-img" src={each.img}/>
                                     <p className="hourly-forecast-descriptions">{each.temp}</p>
                                     <img className="hourly-forecast-wind-speed-img" src={each.image}/>
                                     <p className="hourly-forecast-descriptions">{each.windSpeed}</p>
-                                  </li>)
+                                  </li>)})
                                 }
                                </ul>
                            </div>)}

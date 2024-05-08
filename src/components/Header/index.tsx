@@ -1,4 +1,4 @@
-import {ChangeEvent, Component} from "react"
+import {ChangeEvent, Component, FormEvent} from "react"
 
 import { CiSearch } from "react-icons/ci";
 
@@ -19,6 +19,13 @@ class Header extends Component<headerDataType>{
             
             onChangingMode = ()=>{
                this.props.changeMode()
+            }
+
+            onSubmittingInputValue = (event:FormEvent<HTMLFormElement>)=>{
+                 event.preventDefault()
+                 const {inputSearch} = this.state
+                 this.props.updateCity(inputSearch)
+                 this.setState({inputSearch:""})
             }
 
             onUpdatingCity = ()=>{
@@ -53,10 +60,10 @@ class Header extends Component<headerDataType>{
                                     </div>
                                     <p className={modeCaptionCSSValue}>{isDarkMode?"Dark Mode":"Light Mode"}</p>
                                  </div>
-                                 <div className="search-icon-input-elements-container">
+                                 <form className="search-icon-input-elements-container" onSubmit = {this.onSubmittingInputValue}>
                                     <CiSearch  className={searchIconCss} onClick={this.onUpdatingCity} />
                                     <input placeholder="Search for your preferred city..."  onChange={this.onChangeInputSerchValue} type = "search" value={inputSearch} className={searchInputCss}/>
-                                 </div>
+                                 </form>
                                  <div className="current-location-icon-and-caption-container">
                                     <FaLocationCrosshairs className="current-location-icon" />
                                     <p className="current-location-caption">Current Location</p>

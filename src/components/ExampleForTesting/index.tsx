@@ -1,6 +1,9 @@
 import {useState,useEffect} from "react"
 
+import { TailSpin } from "react-loader-spinner"
+
 import "./index.css"
+
 
  
 type user = {
@@ -33,6 +36,8 @@ const  ExampleTesting = (props:user)=>{
 
     const [isCentigrade,setDegreeType] = useState(true)
 
+    const [isLoading,setLoadingState] = useState(false)
+
     const changeDegreeType = ()=>{
         setDegreeType(!isCentigrade)
     }
@@ -56,6 +61,7 @@ const  ExampleTesting = (props:user)=>{
             pressure:current.pressure_mb
         }
         setWeatherReport(updatedCurrentWeatherData)
+        setLoadingState(false)
         } catch (error) {
             console.log(error)
         }
@@ -68,18 +74,21 @@ const  ExampleTesting = (props:user)=>{
 
     
   useEffect(()=>{
+    setLoadingState(true)
     getWeatherData()
   },[props.city]);
 
         const {humidity,centigrade,fahrenheit,windSpeed,uv,pressure,feelsLikeCenti,feelsLikeFaren} = currentWeatherReport;
         const {isDarkMode} = props
         const fontCssValue = isDarkMode?`current-weather-report-time-container`:`current-weather-report-time-container ${"current-weather-report-time-container-light-mode"}`
+        const typeOfTempStyling = isDarkMode?"type-of-temperature":`type-of-temperature ${"type-of-temperature-light-mode"}`
         return(
-            <div className={fontCssValue}>
-                <div>
-                        <div>
-                            <h1>{isCentigrade?centigrade:fahrenheit}<sup>0</sup>{isCentigrade?"C":"F"}</h1>
-                            <p >Feels like:<span>{isCentigrade?feelsLikeCenti:feelsLikeFaren}<sup>0</sup>{isCentigrade?"C":"F"}</span></p>
+            <div className="loader-and-content-container">
+            {isLoading?<TailSpin color="#00FF00" height={100} width={100}/>:(<div className={fontCssValue}>
+                <div className="current-temp-sun-rise-sun-set-container">
+                        <div className="current-temp-conatiner">
+                            <h1 className="current-temp">{isCentigrade?centigrade:fahrenheit}<sup>0</sup>{isCentigrade?"C":"F"}</h1>
+                            <p className="temp-feels-like">Feels like:<span>{isCentigrade?feelsLikeCenti:feelsLikeFaren}<sup>0</sup>{isCentigrade?"C":"F"}</span></p>
                         </div>
                         <div className="sun-rise-img-time-part-container">
                             <img className="sun-rise-image" src={isDarkMode?"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714977758/sunrise-white_1_rhnenn.png":"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714991401/sunrise-white_1_jzdftl.png"}/>
@@ -87,7 +96,6 @@ const  ExampleTesting = (props:user)=>{
                                 <p>Sunrise</p>
                                 <p >6:00 AM</p>
                             </div>
-                            
                         </div>
                         <div className="sun-set-img-time-part-container">
                             <img className="sun-set-image" src={isDarkMode?"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714977790/sunset-white_1_ctnkbw.png":"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714991364/sunset-white_1_xodqhx.png"}/>
@@ -98,12 +106,12 @@ const  ExampleTesting = (props:user)=>{
                         </div>
                 </div>
                 <div className="btn-img-heading-container">
-                    <button type="button" onClick={changeDegreeType} className="type-of-temperature">{isCentigrade?"Centigrade":"Fahrenheit"}</button>
-                    <p>Click above button to change to {isCentigrade?"Farenheit":"Centigrade"}</p>
+                    <button type="button" onClick={changeDegreeType} className={typeOfTempStyling}>{isCentigrade?"Centigrade":"Fahrenheit"}</button>
+                    <p className="guide-para">Click above button to change to {isCentigrade?"Farenheit":"Centigrade"}</p>
                     <img className="sun-image" src="https://res.cloudinary.com/dlwlnr20m/image/upload/v1714818347/clear_1_d38qqe.png"/>
-                    <h1>Sunny</h1>
+                    <h1 className="sunny-heading">Sunny</h1>
                 </div>  
-                <div>
+                <div className="other-parameters-container">
                     <div className="humidity-windspeed-parts-container">
                          <div className="humidity-part-container">
                             <img className="weather-icons" src={isDarkMode?"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714976430/humidity_1_ixvfjz.png":"https://res.cloudinary.com/dlwlnr20m/image/upload/v1714991429/humidity_1_q8yak9.png"}/>
@@ -129,6 +137,7 @@ const  ExampleTesting = (props:user)=>{
                          </div>
                     </div>
                 </div>
+            </div>)}
             </div>
         )
     

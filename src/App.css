@@ -2,14 +2,12 @@
   background: #444444;
   width: 100%;
   padding-bottom: 20px;
-  padding-top: 10px;
 }
 
 
 .bg-container-light-mode{
-  background-color: #F8F9F9;
+  background-color: #FFFFFF;
   width: 100%;
-  padding-top: 10px;
   padding-bottom: 20px;
 
 }
@@ -17,6 +15,18 @@
 .current-timedate-and-forecast-container{
   display: flex;
   flex-direction: row;
+}
+
+@media all and (max-width:576px){
+  .current-data-container{
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .forecast-data-container{
+    display: flex;
+    flex-direction: column !important;
+  }
 }
 
 .current-data-container{
